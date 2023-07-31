@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         makeImageRandom()
         imgUserSelect?.setOnClickListener {
             val intent = Intent(this@MainActivity, ListAnimalsActivity::class.java)
-            intent.putExtra("listImage", listArrayImageNames.toTypedArray())
+            intent.putExtra("list_name_image_animals", listArrayImageNames.toTypedArray())
             startActivity(intent)
         }
     }
