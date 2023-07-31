@@ -1,5 +1,6 @@
 package com.example.intentexplicit19052023
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
@@ -26,5 +27,14 @@ class ListAnimalsActivity : AppCompatActivity() {
 
         animalsAdapter = AnimalAdapter(listImageResources)
         recyclerViewAnimal?.adapter = animalsAdapter
+
+        animalsAdapter?.setOnItemClickListener(object: OnItemAnimalClickListener{
+            override fun onClick(position: Int) {
+                val intent = Intent(this@ListAnimalsActivity, MainActivity::class.java)
+                intent.putExtra("resourceId", listImageResources.getOrNull(position))
+                setResult(RESULT_OK, intent)
+                finish()
+            }
+        })
     }
 }

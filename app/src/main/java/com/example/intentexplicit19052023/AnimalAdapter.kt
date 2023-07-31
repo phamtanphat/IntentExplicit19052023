@@ -8,11 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 class AnimalAdapter(
-    var listImageResources: List<Int>
+    private var listImageResources: List<Int>,
+    private var onItemClickListener: OnItemAnimalClickListener? = null
 ) : RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>() {
 
-    class AnimalViewHolder(view: View) : ViewHolder(view) {
+    inner class AnimalViewHolder(view: View) : ViewHolder(view) {
         private var imgView = view.findViewById<ImageView>(R.id.image_view_animals)
+
+        init {
+            imgView.setOnClickListener {
+                onItemClickListener?.onClick(adapterPosition)
+            }
+        }
 
         fun bind(resId: Int?) {
             resId ?: return
@@ -33,4 +40,12 @@ class AnimalAdapter(
     override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
         holder.bind(listImageResources.getOrNull(position))
     }
+
+    fun setOnItemClickListener(onItemClickListener: OnItemAnimalClickListener) {
+        this.onItemClickListener = onItemClickListener
+    }
+}
+
+interface OnItemAnimalClickListener {
+    fun onClick(position: Int)
 }

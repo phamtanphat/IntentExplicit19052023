@@ -4,8 +4,8 @@
         <item>bo</item>
         <item>bocanhcung</item>
         <item>bongua</item>
-        <item>bongua</item>
         <item>cachep</item>
+        <item>cadia</item>
         <item>chimcanhcut</item>
         <item>cho</item>
         <item>chodom</item>
@@ -18,5 +18,6 @@
         <item>meotrang</item>
         <item>rua</item>
         <item>soi</item>
+        <item>voi</item>
     </string-array>
 </resources>
