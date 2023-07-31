@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,16 +29,18 @@ class MainActivity : AppCompatActivity() {
         imgUserSelect = findViewById(R.id.image_view_user_select)
 
         listArrayImageNames = resources.getStringArray(R.array.string_array_images_animal).toList()
-        var nameImageFirst = listArrayImageNames[2]
-        var drawableImageFirst = resources.getIdentifier(nameImageFirst, "drawable", packageName)
+        makeImageRandom()
+    }
 
-        imgRandom?.setImageResource(drawableImageFirst)
-
-
+    private fun makeImageRandom() {
         // Step 1: Tao 1 list chua 18 drawable
         //      1.1: Tao 1 list chua ten hinh trong String resource
         //      1.2: Chuyen doi tu list ten hinh sang list drawable
         // Step 2: Thuc hien random cho kich thuoc cua list
         // Step 3: Gia tri ngau nhien nhan duoc chinh la index cua mang
+        val indexRandom = Random.nextInt(listArrayImageNames.size)
+        val imageNameRandom = listArrayImageNames[indexRandom]
+        val drawableImageFirst = resources.getIdentifier(imageNameRandom, "drawable", packageName)
+        imgRandom?.setImageResource(drawableImageFirst)
     }
 }
