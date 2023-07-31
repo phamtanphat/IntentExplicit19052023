@@ -1,5 +1,6 @@
 package com.example.intentexplicit19052023
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,8 +14,7 @@ class MainActivity : AppCompatActivity() {
     private var imgRandom: ImageView? = null
     private var imgUserSelect: ImageView? = null
 
-    private var listArrayImageNames: List<String> = mutableListOf<String>()
-    private var listImageDrawables = mutableListOf<Int>()
+    private var listArrayImageNames: List<String> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,6 +30,11 @@ class MainActivity : AppCompatActivity() {
 
         listArrayImageNames = resources.getStringArray(R.array.string_array_images_animal).toList()
         makeImageRandom()
+        imgUserSelect?.setOnClickListener {
+            val intent = Intent(this@MainActivity, ListAnimalsActivity::class.java)
+            intent.putExtra("listImage", listArrayImageNames.toTypedArray())
+            startActivity(intent)
+        }
     }
 
     private fun makeImageRandom() {
